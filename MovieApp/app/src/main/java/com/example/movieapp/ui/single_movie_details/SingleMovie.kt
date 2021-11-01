@@ -18,6 +18,8 @@ import java.util.*
 
 class SingleMovie : AppCompatActivity() {
 
+    //updating the UI with LIVE data in our view model from the repository
+
     private lateinit var viewModel: SingleMovieViewModel
     private lateinit var movieRepository: MovieDetailsRepository
 
@@ -28,7 +30,7 @@ class SingleMovie : AppCompatActivity() {
 
         val movieId: Int = intent.getIntExtra("id",1)
 
-        val apiService : TheMovieDBInterface = TheMovieDBClient.getClient()
+        val apiService : TheMovieDBInterface = TheMovieDBClient.getClient() // get API instance from the retrofit
         movieRepository = MovieDetailsRepository(apiService)
 
         viewModel = getViewModel(movieId)
@@ -37,6 +39,7 @@ class SingleMovie : AppCompatActivity() {
             bindUI(it)
         })
 
+        //checking the network state
         viewModel.networkState.observe(this, Observer {
             progress_bar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
             txt_error.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
@@ -46,6 +49,7 @@ class SingleMovie : AppCompatActivity() {
     }
 
     private fun bindUI(it: MovieDetails){
+        //update the viewGroup
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
@@ -58,11 +62,9 @@ class SingleMovie : AppCompatActivity() {
         movie_revenue.text = formatCurrency.format(it.revenue)
 
         val moviePosterURL = POSTER_BASE_URL + it.posterPath
-        Glide.with(this)
+        Glide.with(this)// using glide to show our into the imageView.
             .load(moviePosterURL)
             .into(iv_movie_poster)
-
-
     }
 
 

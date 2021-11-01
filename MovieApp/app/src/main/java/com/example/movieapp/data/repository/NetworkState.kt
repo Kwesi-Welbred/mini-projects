@@ -1,4 +1,4 @@
-package com.oxcoding.moviemvvm.data.repository
+package com.example.movieapp.data.repository
 
 enum class Status {
     RUNNING,

@@ -3,7 +3,7 @@ package com.example.movieapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.oxcoding.moviemvvm.ui.single_movie_details.SingleMovie
+import com.example.movieapp.ui.single_movie_details.SingleMovie
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

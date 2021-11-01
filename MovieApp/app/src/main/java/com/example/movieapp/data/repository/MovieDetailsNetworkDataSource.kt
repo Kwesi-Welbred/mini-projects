@@ -5,10 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.movieapp.data.api.TheMovieDBInterface
 import com.example.movieapp.data.vo.MovieDetails
-import com.oxcoding.moviemvvm.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+
+//RX java network calls for our live data
 class MovieDetailsNetworkDataSource (private val apiService : TheMovieDBInterface, private val compositeDisposable: CompositeDisposable) {
 
     private val _networkState  = MutableLiveData<NetworkState>()

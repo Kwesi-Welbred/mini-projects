@@ -1,18 +1,16 @@
-package com.oxcoding.moviemvvm.ui.single_movie_details
+package com.example.movieapp.ui.single_movie_details
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.*
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.oxcoding.moviemvvm.R
+import com.example.movieapp.R
 import com.example.movieapp.data.api.POSTER_BASE_URL
 import com.example.movieapp.data.api.TheMovieDBClient
 import com.example.movieapp.data.api.TheMovieDBInterface
-import com.oxcoding.moviemvvm.data.repository.NetworkState
+import com.example.movieapp.data.repository.NetworkState
 import com.example.movieapp.data.vo.MovieDetails
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import java.text.NumberFormat
@@ -47,12 +45,12 @@ class SingleMovie : AppCompatActivity() {
 
     }
 
-    fun bindUI( it: MovieDetails){
+    private fun bindUI(it: MovieDetails){
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
         movie_rating.text = it.rating.toString()
-        movie_runtime.text = it.runtime.toString() + " minutes"
+        movie_runtime.text = it.runtime.toString() + R.string.minutes
         movie_overview.text = it.overview
 
         val formatCurrency = NumberFormat.getCurrencyInstance(Locale.US)
@@ -62,14 +60,14 @@ class SingleMovie : AppCompatActivity() {
         val moviePosterURL = POSTER_BASE_URL + it.posterPath
         Glide.with(this)
             .load(moviePosterURL)
-            .into(iv_movie_poster);
+            .into(iv_movie_poster)
 
 
     }
 
 
     private fun getViewModel(movieId:Int): SingleMovieViewModel {
-        return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
+        return ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
                 return SingleMovieViewModel(movieRepository,movieId) as T

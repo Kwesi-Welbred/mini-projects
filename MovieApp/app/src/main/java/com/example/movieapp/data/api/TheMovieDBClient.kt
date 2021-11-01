@@ -16,7 +16,7 @@ const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342/or06FN3Dka5tukK1e9s
 // https://api.themoviedb.org/3/movie/299534?api_key=92011820a117b4d9672355794c2285e9
 // https://image.tmdb.org/t/p/w342/or06FN3Dka5tukK1e9sl16pB3iy.jpg
 
-object TheMovieDBClient {
+object TheMovieDBClient {// retrofit instance
 
     fun getClient(): TheMovieDBInterface {
 
@@ -37,11 +37,13 @@ object TheMovieDBClient {
             return@Interceptor chain.proceed(request)   //explicitly return a value from whit @ annotation. lambda always returns the value of the last expression implicitly
         }
 
+
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(requestInterceptor)
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()
 
+        //GsonConverterFactory
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)

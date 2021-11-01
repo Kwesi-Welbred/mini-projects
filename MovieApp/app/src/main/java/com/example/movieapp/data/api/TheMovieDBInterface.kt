@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface TheMovieDBInterface {
+    //this is where we declare our API endpoints
 
     //https://api.themoviedb.org/3/movie/popular?api_key=92011820a117b4d9672355794c2285e9
     // https://api.themoviedb.org/3/movie/299534?api_key=92011820a117b4d9672355794c2285e9
@@ -14,5 +15,4 @@ interface TheMovieDBInterface {
 
     @GET("movie/{movie_id}")
     fun getMovieDetails(@Path("movie_id") id: Int): Single<MovieDetails>//observable class for movie details
-
 }

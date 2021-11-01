@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.oxcoding.moviemvvm.R
-import com.oxcoding.moviemvvm.data.api.POSTER_BASE_URL
-import com.oxcoding.moviemvvm.data.api.TheMovieDBClient
-import com.oxcoding.moviemvvm.data.api.TheMovieDBInterface
+import com.example.movieapp.data.api.POSTER_BASE_URL
+import com.example.movieapp.data.api.TheMovieDBClient
+import com.example.movieapp.data.api.TheMovieDBInterface
 import com.oxcoding.moviemvvm.data.repository.NetworkState
 import com.example.movieapp.data.vo.MovieDetails
 import kotlinx.android.synthetic.main.activity_single_movie.*

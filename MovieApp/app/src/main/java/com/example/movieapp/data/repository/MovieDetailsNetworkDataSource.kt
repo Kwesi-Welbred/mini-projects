@@ -1,10 +1,11 @@
-package com.oxcoding.moviemvvm.data.repository
+package com.example.movieapp.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.oxcoding.moviemvvm.data.api.TheMovieDBInterface
+import com.example.movieapp.data.api.TheMovieDBInterface
 import com.example.movieapp.data.vo.MovieDetails
+import com.oxcoding.moviemvvm.data.repository.NetworkState
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
@@ -34,7 +35,7 @@ class MovieDetailsNetworkDataSource (private val apiService : TheMovieDBInterfac
                         },
                         {
                             _networkState.postValue(NetworkState.ERROR)
-                            Log.e("MovieDetailsDataSource", it.message)
+                            it.message?.let { it1 -> Log.e("MovieDetailsDataSource", it1) }
                         }
                     )
             )
@@ -42,7 +43,7 @@ class MovieDetailsNetworkDataSource (private val apiService : TheMovieDBInterfac
         }
 
         catch (e: Exception){
-            Log.e("MovieDetailsDataSource",e.message)
+            e.message?.let { Log.e("MovieDetailsDataSource", it) }
         }
 
 

@@ -1,8 +1,8 @@
 package com.oxcoding.moviemvvm.ui.single_movie_details
 
 import androidx.lifecycle.LiveData
-import com.oxcoding.moviemvvm.data.api.TheMovieDBInterface
-import com.oxcoding.moviemvvm.data.repository.MovieDetailsNetworkDataSource
+import com.example.movieapp.data.api.TheMovieDBInterface
+import com.example.movieapp.data.repository.MovieDetailsNetworkDataSource
 import com.oxcoding.moviemvvm.data.repository.NetworkState
 import com.example.movieapp.data.vo.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
